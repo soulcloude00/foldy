@@ -71,7 +71,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;op
 #flip .back .from{font-family:Caveat,cursive;color:var(--orange);font-size:22px;display:block;margin-bottom:4px;font-weight:600}
 
 /* ask card */
-#ask{position:absolute;left:50%;top:42%;width:min(390px,88vw);z-index:12;background:var(--paper);border-radius:8px;padding:18px 20px;font-weight:800;font-size:clamp(15px,1.4vw,17.5px);line-height:1.45;box-shadow:0 22px 34px -18px rgba(110,60,20,.5);opacity:0;transform:translate(-50%,-50%) translateY(40px) rotate(-3deg);transition:opacity .4s,transform .7s cubic-bezier(.3,1.5,.5,1);pointer-events:none}
+#ask{position:absolute;left:50%;top:42%;width:min(390px,84vw);z-index:12;background:var(--paper);border-radius:8px;padding:18px 20px;font-weight:800;font-size:clamp(15px,1.4vw,17.5px);line-height:1.45;box-shadow:0 22px 34px -18px rgba(110,60,20,.5);opacity:0;transform:translate(-50%,-50%) translateY(40px) rotate(-3deg);transition:opacity .4s,transform .7s cubic-bezier(.3,1.5,.5,1);pointer-events:none}
 #ask.on{opacity:1;transform:translate(-50%,-50%) rotate(-1.5deg);pointer-events:auto}
 #ask::before{content:"";position:absolute;top:-10px;left:50%;width:70px;height:20px;background:var(--tape);transform:translateX(-50%) rotate(-3deg);border-radius:2px}
 .btns{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
@@ -110,7 +110,8 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;op
   :root{--fs:clamp(130px,38vw,170px)}
   #caption{top:64%}
   .slip{width:min(172px,44vw);padding:12px 13px}
-  #flip{height:210px}
+  #flip{height:200px}
+  #flip .front{font-size:12px}
   .promise{font-size:13.5px;top:64%}
 }
 @media (prefers-reduced-motion:reduce){#foldy .body,#foldy .shadow{animation:none}}
@@ -122,7 +123,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;op
     <div class="shadow"></div>
     <div class="body"><div class="pose" id="pose"></div></div>
   </div>
-  <div id="zz">z z z</div>
+    <div id="zz" hidden></div>
   <div class="bubble" id="bubble"></div>
 
   <div class="slip" id="s1" style="left:22%;top:26%;--r:-4deg;--fx:-60vw;--fy:-10vh;--fr:-30deg"><span class="dot" style="background:#6fb37a"></span>tiara is happy<small>12 visits in the last hour</small></div>
@@ -188,7 +189,6 @@ async function film(){
   const my=++run;reset();
   try{
     // 1. asleep -> wakes up
-    $('zz').style.left=mob()?'66%':'58%';$('zz').style.top=mob()?'24%':'22%';$('zz').classList.add('on');
     await caption('shh','foldy is <em>napping</em>','');
     await wait(3400);
     $('zz').classList.remove('on');foldy.classList.remove('sleeping');
@@ -256,4 +256,4 @@ $('skip').onclick=()=>{run++;reset();foldy.classList.remove('sleeping');face('ba
 addEventListener('load',()=>setTimeout(film,500));
 </script>
 </body>
-        </html>
+                                                  </html>
