@@ -203,7 +203,7 @@ async function film(){
     await caption('while you build','i watch your <em>workspace.</em>','every app, release and health check. i tell you what matters, first.');
     const order=mob()?['s1','s3','s2','s4']:['s1','s2','s3','s4'];
     if(mob()){ // tighter layout for phones
-      const pos={s1:['27%','14%'],s2:['73%','20%'],s3:['27%','56%'],s4:['73%','60%']};
+      const pos={s1:['27%','11%'],s2:['73%','19%'],s3:['27%','48%'],s4:['73%','55%']};
       for(const k in pos){$(k).style.left=pos[k][0];$(k).style.top=pos[k][1];}
     }
     for(const id of order){$(id).classList.add('on');face($(id).style.left.startsWith('2')||$(id).style.left.startsWith('1')?'left':'right');await wait(700);}
@@ -256,4 +256,4 @@ $('skip').onclick=()=>{run++;reset();foldy.classList.remove('sleeping');face('ba
 addEventListener('load',()=>setTimeout(film,500));
 </script>
 </body>
-                                                  </html>
+  </html>
