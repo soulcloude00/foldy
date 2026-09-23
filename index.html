@@ -92,8 +92,8 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;op
 #final.on .chip{opacity:1;transform:rotate(var(--r))}
 #final.on .chip:nth-child(2){transition-delay:.12s}#final.on .chip:nth-child(3){transition-delay:.24s}
 .chip:hover{transform:translateY(-3px)!important}
-#answer{min-height:3em;margin:16px auto 0;max-width:36ch;font-weight:700;font-size:16px;line-height:1.5}
-.cta{margin-top:8px;background:var(--orange);color:#fff;font-family:Fraunces,serif;font-variation-settings:"SOFT" 100;font-style:italic;font-weight:600;font-size:clamp(21px,2.3vw,27px);padding:16px 36px;border-radius:999px;border:0;cursor:pointer;box-shadow:0 7px 0 #b9541f,0 20px 30px -12px rgba(185,84,31,.6);transition:transform .15s,box-shadow .15s}
+#answer{min-height:4.6em;margin:14px auto 0;max-width:36ch;font-weight:700;font-size:16px;line-height:1.5}
+.cta{margin-top:4px;background:var(--orange);color:#fff;font-family:Fraunces,serif;font-variation-settings:"SOFT" 100;font-style:italic;font-weight:600;font-size:clamp(21px,2.3vw,27px);padding:16px 36px;border-radius:999px;border:0;cursor:pointer;box-shadow:0 7px 0 #b9541f,0 20px 30px -12px rgba(185,84,31,.6);transition:transform .15s,box-shadow .15s}
 .cta:active{transform:translateY(5px);box-shadow:0 2px 0 #b9541f}
 
 /* corner controls + fold progress */
@@ -188,8 +188,9 @@ async function film(){
   const my=++run;reset();
   try{
     // 1. asleep -> wakes up
+    $('zz').style.left=mob()?'66%':'58%';$('zz').style.top=mob()?'24%':'22%';$('zz').classList.add('on');
     await caption('shh','foldy is <em>napping</em>','');
-    await wait(2200);
+    await wait(3400);
     $('zz').classList.remove('on');foldy.classList.remove('sleeping');
     face('blink');await wait(260);face('base');await wait(200);await blink();await wait(250);
     face('happy');once('hop');prog(.12);
@@ -230,15 +231,15 @@ async function film(){
     if(a==='yes'){face('happy');once('hop');$('askreply').textContent="done. it's asleep. i wrote it in the log.";}
     else{face('left');foldy.classList.add('tilt');$('askreply').textContent="okay! i'll leave it alone.";}
     await wait(900);foldy.classList.remove('tilt');face('base');
-    $('promise').style.top=mob()?'62%':'64%';$('promise').classList.add('on');
+    $('promise').style.left=mob()?'50%':'66%';$('promise').style.top=mob()?'64%':'62%';$('promise').classList.add('on');
     await wait(3000);
     // 5. finale
     prog(1);$('ask').classList.remove('on');$('promise').classList.remove('on');
-    $('caption').style.top=mob()?'33%':'35%';
+    $('caption').style.top=mob()?'31%':'32%';
     place('50%',mob()?'17%':'19%',mob()?'110px':'clamp(120px,19vmin,180px)');
     await caption('','so, what should we <em>look at first?</em>','');
     face('happy');once('hop');await wait(700);face('base');
-    $('final').style.top=mob()?'54%':'57%';$('final').classList.add('on');
+    $('final').style.top=mob()?'52%':'53%';$('final').classList.add('on');
   }catch(e){if(e!=='cancel')console.error(e)}
 }
 document.querySelectorAll('.btn').forEach(b=>b.onclick=()=>{if(askResolve)askResolve(b.dataset.a)});
@@ -250,9 +251,9 @@ document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{face('right');setTi
 $('cta').onclick=()=>{face('happy');once('wiggle');typeOut("hi! i'm here whenever you need me. just ask.");setTimeout(()=>face('base'),1600)};
 $('replay').onclick=()=>film();
 $('skip').onclick=()=>{run++;reset();foldy.classList.remove('sleeping');face('base');document.body.className='peach';prog(1);
-  $('caption').style.top=mob()?'33%':'35%';place('50%',mob()?'17%':'19%',mob()?'110px':'clamp(120px,19vmin,180px)');
-  $('title').innerHTML='so, what should we <em>look at first?</em>';$('final').style.top=mob()?'54%':'57%';$('final').classList.add('on');};
+  $('caption').style.top=mob()?'31%':'32%';place('50%',mob()?'17%':'19%',mob()?'110px':'clamp(120px,19vmin,180px)');
+  $('title').innerHTML='so, what should we <em>look at first?</em>';$('final').style.top=mob()?'52%':'53%';$('final').classList.add('on');};
 addEventListener('load',()=>setTimeout(film,500));
 </script>
 </body>
-</html>
+        </html>
